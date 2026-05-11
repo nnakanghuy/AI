@@ -27,7 +27,7 @@ ax = plt.axes(xlim=(-5,35), ylim = (-10,60))
 plt.plot(A,b,'ro')
 x_square = np.array([A[:,0]**2]).T
 A = np.concatenate((x_square,A), axis = 1)
-
+#ve do thi = linear regression
 lr = linear_model.LinearRegression()
 lr.fit(A,b)
 
@@ -40,12 +40,13 @@ A = np.concatenate((A,ones), axis =1)
 #random
 x0_init = np.array([[-2.1],[5.1],[-2.1]])
 y0_init = x0_init[0][0]*x0**2+x0_init[1][0]*x0+x0_init[2][0]
-plt.plot(x0,y0_init,color = "black")
+plt.plot(x0,y0_init,color = "black", alpha = 0.3)
 
 
 iteration = 70
 learning_rate = 1e-6
 x_list = gradient_descent(x0_init,learning_rate,iteration)
+#draw list
 for i in range(len(x_list)):
     y0_list = x_list[i][0]*x0**2+x_list[i][1]*x0+x_list[i][2]
     plt.plot(x0, y0_list,color = "black", alpha =0.3)
